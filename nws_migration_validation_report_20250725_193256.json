@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-07-25T23:32:56.788282+00:00",
+  "overall_status": "SUCCESS",
+  "success_rate": 1.0,
+  "total_tests": 6,
+  "passed_tests": 6,
+  "test_results": {
+    "data_extraction_workflow": true,
+    "schema_validation": true,
+    "data_quality": true,
+    "dbt_compatibility": true,
+    "error_handling": true,
+    "performance": true
+  },
+  "detailed_results": {
+    "points_api": "Success",
+    "url_extraction": "Success",
+    "current_fetch": "Success",
+    "hourly_fetch": "Success",
+    "daily_fetch": "Success",
+    "current_transform": "Success",
+    "hourly_transform": "Success: 48 records",
+    "daily_transform": "Success: 7 records",
+    "total_records_stored": 56,
+    "schema_validation": {
+      "current_weather": "Valid",
+      "hourly_weather": "Valid",
+      "daily_weather": "Valid"
+    },
+    "data_quality": {
+      "current_weather": {
+        "total_records": 1,
+        "data_completeness": 1.0,
+        "avg_temp": 31.100000381469727,
+        "temp_reasonable": true,
+        "humidity_valid": true,
+        "pressure_valid": true
+      },
+      "hourly_weather": {
+        "total_records": 48,
+        "expected_minimum": true,
+        "avg_temp": 24.571759064992268,
+        "pop_valid": true
+      },
+      "daily_weather": {
+        "total_records": 7,
+        "expected_minimum": true,
+        "temp_logic_valid": true,
+        "avg_temp_max": 29.682539803641184,
+        "avg_temp_min": 20.238095147269114
+      }
+    },
+    "dbt_compatibility": {
+      "current_staging": true,
+      "hourly_staging": true,
+      "daily_staging": true
+    },
+    "error_scenarios": {
+      "geographic_validation": true,
+      "response_validation": true,
+      "transform_handling": true
+    },
+    "performance": {
+      "extraction_time": 0.17977404594421387,
+      "within_threshold": true,
+      "threshold": 60
+    }
+  },
+  "requirements_met": {
+    "2.1_schema_compatibility": true,
+    "2.2_current_weather_format": true,
+    "2.3_hourly_weather_format": true,
+    "2.4_daily_weather_format": true,
+    "2.5_database_compatibility": true,
+    "6.1_data_transformation_tests": true,
+    "6.2_integration_tests": true
+  }
+}

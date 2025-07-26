@@ -1,0 +1,63 @@
+name: 'boston_weather'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'boston_weather'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  boston_weather:
+    # Config indicated by + and applies to all files under models/example/
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
+
+# Configuring tests
+tests:
+  boston_weather:
+    +store_failures: true
+    +warn_if: ">10"
+    +error_if: ">100"
+
+# Configuring seeds
+seeds:
+  boston_weather:
+    +column_types:
+      id: integer
+      created_at: timestamp
+
+# Configuring snapshots
+snapshots:
+  boston_weather:
+    +target_schema: snapshots
+    +strategy: timestamp
+    +updated_at: updated_at
+
+# Configuring docs
+docs-paths: ["docs"]
+
+# Configuring packages
+packages-install-path: "dbt_packages"
+
+# Configuring vars
+vars:
+  # Add any project-level variables here
+  weather_location: "Boston"
+  weather_lat: 42.3601
+  weather_lon: -71.0589 

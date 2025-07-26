@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  # Python Weather Extractor (disabled - Dagster handles extraction)
+  # extractor:
+  #   build:
+  #     context: ./extractor
+  #     dockerfile: Dockerfile
+  #   container_name: weather-etl-extractor
+  #   environment:
+  #     - BOSTON_LAT=${BOSTON_LAT}
+  #     - BOSTON_LON=${BOSTON_LON}
+  #     - DUCKDB_PATH=/data/weather.db
+  #     - LOG_LEVEL=${LOG_LEVEL}
+  #   volumes:
+  #     - ./data:/data
+  #     - ./extractor:/app/extractor
+  #   restart: unless-stopped
+
+  # DBT for Data Transformation
+  dbt:
+    build:
+      context: ./dbt
+      dockerfile: Dockerfile
+    container_name: weather-etl-dbt
+    environment:
+      - DUCKDB_PATH=/data/weather.db
+    volumes:
+      - ./data:/data
+      - ./dbt:/dbt
+    # depends_on:
+    #   - extractor
+    command: ["tail", "-f", "/dev/null"]
+    restart: unless-stopped
+
+  # Dagster Orchestrator
+  dagster:
+    build:
+      context: .
+      dockerfile: ./dagster/Dockerfile
+    container_name: weather-etl-dagster
+    ports:
+      - "3000:3000"
+    environment:
+      - DAGSTER_HOME=${DAGSTER_HOME}
+      - BOSTON_LAT=${BOSTON_LAT}
+      - BOSTON_LON=${BOSTON_LON}
+      - DUCKDB_PATH=/data/weather.db
+    volumes:
+      - ./data:/data
+      - ./extractor:/app/extractor
+      - ./dbt:/dbt
+      - dagster_home:${DAGSTER_HOME}
+    depends_on:
+      - dbt
+    restart: unless-stopped
+
+volumes:
+  dagster_home:

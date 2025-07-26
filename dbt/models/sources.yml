@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw weather data from National Weather Service API"
+    tables:
+      - name: current_weather
+        description: "Current weather conditions for Boston"
+        columns:
+          - name: timestamp
+            description: "Timestamp of the weather reading"
+            tests:
+              - not_null
+          - name: temp
+            description: "Temperature in Celsius"
+          - name: feels_like
+            description: "Feels like temperature in Celsius"
+          - name: humidity
+            description: "Humidity percentage"
+          - name: pressure
+            description: "Atmospheric pressure in hPa"
+          - name: wind_speed
+            description: "Wind speed in m/s"
+          - name: wind_deg
+            description: "Wind direction in degrees"
+          - name: description
+            description: "Weather description"
+          - name: icon
+            description: "Weather icon code"
+      
+      - name: hourly_weather
+        description: "Hourly weather forecast for Boston"
+        columns:
+          - name: timestamp
+            description: "Timestamp of the forecast"
+            tests:
+              - not_null
+          - name: temp
+            description: "Temperature in Celsius"
+          - name: feels_like
+            description: "Feels like temperature in Celsius"
+          - name: humidity
+            description: "Humidity percentage"
+          - name: pressure
+            description: "Atmospheric pressure in hPa"
+          - name: wind_speed
+            description: "Wind speed in m/s"
+          - name: wind_deg
+            description: "Wind direction in degrees"
+          - name: description
+            description: "Weather description"
+          - name: icon
+            description: "Weather icon code"
+          - name: pop
+            description: "Probability of precipitation"
+      
+      - name: daily_weather
+        description: "Daily weather forecast for Boston"
+        columns:
+          - name: date
+            description: "Date of the forecast"
+            tests:
+              - not_null
+          - name: temp_min
+            description: "Minimum temperature in Celsius"
+          - name: temp_max
+            description: "Maximum temperature in Celsius"
+          - name: temp_day
+            description: "Daytime temperature in Celsius"
+          - name: temp_night
+            description: "Nighttime temperature in Celsius"
+          - name: humidity
+            description: "Humidity percentage"
+          - name: pressure
+            description: "Atmospheric pressure in hPa"
+          - name: wind_speed
+            description: "Wind speed in m/s"
+          - name: wind_deg
+            description: "Wind direction in degrees"
+          - name: description
+            description: "Weather description"
+          - name: icon
+            description: "Weather icon code"
+          - name: pop
+            description: "Probability of precipitation" 

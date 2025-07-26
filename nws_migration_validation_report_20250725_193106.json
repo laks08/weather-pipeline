@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-07-25T23:31:04.064052+00:00",
+  "migration_status": "NEEDS_ATTENTION",
+  "test_results": {
+    "core_functionality": {
+      "\u001b[92mreal_data_extraction": true,
+      "\u001b[92mschema_compliance": true,
+      "\u001b[92mdata_quality": true,
+      "\u001b[92merror_handling": true,
+      "\u001b[92m\u2713": true
+    },
+    "dbt_compatibility": {
+      "\u001b[92mmanual_sql_compatibility": true,
+      "\u001b[92mdbt_compile": true,
+      "\u001b[92mdbt_run": true,
+      "\u001b[92mdbt_tests": true,
+      "\u001b[92mstaging_outputs": true,
+      "\u001b[92m\u2713": true
+    }
+  },
+  "requirements_validation": {
+    "1.1_nws_api_usage": false,
+    "1.2_proper_headers": false,
+    "1.3_no_api_key_required": true,
+    "2.1_schema_compatibility": false,
+    "2.2_current_weather_format": false,
+    "2.3_hourly_weather_format": false,
+    "2.4_daily_weather_format": false,
+    "2.5_database_compatibility": false,
+    "3.1_api_error_handling": false,
+    "3.2_response_validation": false,
+    "3.3_geographic_validation": false,
+    "3.4_timeout_handling": false,
+    "4.1_caching_implemented": true,
+    "4.2_rate_limiting_removed": true,
+    "4.3_efficient_endpoints": false,
+    "5.1_config_updated": true,
+    "5.2_no_api_key_config": true,
+    "5.3_coordinate_validation": false,
+    "5.4_documentation_updated": true,
+    "6.1_data_transformation_tests": false,
+    "6.2_integration_tests": false,
+    "6.3_error_scenario_tests": false,
+    "6.4_workflow_tests": false
+  },
+  "summary": {
+    "migration_status": "NEEDS_ATTENTION",
+    "total_tests": 11,
+    "passed_tests": 11,
+    "test_success_rate": 1.0,
+    "total_requirements": 23,
+    "passed_requirements": 6,
+    "requirements_success_rate": 0.2608695652173913
+  },
+  "recommendations": [
+    "Address failed requirements: 1.1_nws_api_usage, 1.2_proper_headers, 2.1_schema_compatibility, 2.2_current_weather_format, 2.3_hourly_weather_format, 2.4_daily_weather_format, 2.5_database_compatibility, 3.1_api_error_handling, 3.2_response_validation, 3.3_geographic_validation, 3.4_timeout_handling, 4.3_efficient_endpoints, 5.3_coordinate_validation, 6.1_data_transformation_tests, 6.2_integration_tests, 6.3_error_scenario_tests, 6.4_workflow_tests",
+    "Review failed tests and requirements before deployment",
+    "Consider additional testing in staging environment",
+    "Verify error handling scenarios manually"
+  ]
+}

@@ -62,6 +62,10 @@ The pipeline uses a multi-step NWS API workflow:
 3. **Start the pipeline**
 
    ```bash
+   # Recommended: Use the startup script (includes validation and helpful output)
+   ./start.sh
+
+   # Or manually with Docker Compose
    docker-compose up -d
    ```
 
@@ -144,7 +148,10 @@ The pipeline uses the free National Weather Service API with these characteristi
 ### Starting the Pipeline
 
 ```bash
-# Start all services
+# Recommended: Use the startup script
+./start.sh
+
+# Or start manually
 docker-compose up -d
 
 # View logs

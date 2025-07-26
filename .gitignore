@@ -71,4 +71,7 @@ dagster_home/
 
 # Temporary files
 *.tmp
-*.temp 
+*.temp
+
+# Kiro IDE files
+.kiro/ 
